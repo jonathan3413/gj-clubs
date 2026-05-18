@@ -1,0 +1,302 @@
+/* IMPORT FONT MODERN & BOLD */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #f0ece9;
+    --main-black: #000000;
+    --neon-yellow: #FEFF00;
+    --neon-cyan: #00F0FF;
+    --neon-pink: #FF007A;
+    --neon-orange: #FF5C00;
+    --boy-color: #8B93FF;
+    --girl-color: #FFB1B1;
+    --hard-shadow: 8px 8px 0px #000000;
+    --small-shadow: 4px 4px 0px #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--main-black);
+    padding-bottom: 50px;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--neon-cyan);
+    padding: 20px 40px;
+    border-bottom: 5px solid var(--main-black);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: white;
+    padding: 5px 15px;
+    border: 3px solid var(--main-black);
+    box-shadow: var(--small-shadow);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--main-black);
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: white;
+    padding: 8px 16px;
+    border: 3px solid var(--main-black);
+    box-shadow: var(--small-shadow);
+    transition: transform 0.1s ease;
+}
+
+.nav-links a:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 40px 20px;
+    background: var(--neon-yellow);
+    border-bottom: 5px solid var(--main-black);
+}
+
+.hero-card {
+    background: white;
+    border: 5px solid var(--main-black);
+    padding: 5px;
+    padding: 50px;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: var(--hard-shadow);
+    transform: rotate(-1deg);
+}
+
+.hero-card h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-card .highlight {
+    background: var(--neon-pink);
+    color: white;
+    padding: 0 10px;
+    border: 3px solid var(--main-black);
+}
+
+.hero-card p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.btn-main {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--main-black);
+    background: var(--neon-orange);
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: 4px solid var(--main-black);
+    box-shadow: var(--hard-shadow);
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+
+.btn-main:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 4px 4px 0px #000000;
+}
+
+/* UTILITIES */
+.container {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    background: var(--main-black);
+    color: white;
+    display: inline-block;
+    padding: 10px 25px;
+    margin-bottom: 40px;
+    transform: skew(-5deg);
+}
+
+/* ABOUT MATRIX */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.stat-card {
+    border: 4px solid var(--main-black);
+    padding: 30px;
+    box-shadow: var(--hard-shadow);
+    text-align: center;
+}
+
+.stat-card h2 {
+    font-size: 4rem;
+}
+
+.stat-card.yellow { background: var(--neon-yellow); }
+.stat-card.cyan { background: var(--neon-cyan); }
+.stat-card.pink { background: var(--neon-pink); }
+
+/* MEMBERS */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.member-card {
+    border: 4px solid var(--main-black);
+    padding: 25px;
+    box-shadow: var(--hard-shadow);
+    background: white;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.member-card:hover {
+    transform: scale(1.03) rotate(1deg);
+}
+
+.member-card.boy {
+    border-top: 15px solid var(--boy-color);
+}
+
+.member-card.girl {
+    border-top: 15px solid var(--girl-color);
+}
+
+.member-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--main-black);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* GALLERY */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    border: 4px solid var(--main-black);
+    background: white;
+    padding: 10px;
+    box-shadow: var(--small-shadow);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: 3px solid var(--main-black);
+    display: block;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border-top: 5px solid var(--main-black);
+    margin-top: 100px;
+    font-size: 1.1rem;
+}
+
+.bold {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .navbar { padding: 15px 20px; }
+    .nav-links { display: none; } /* Sederhana untuk mobile */
+    .hero-card h1 { font-size: 2.3rem; }
+}
+/* Smooth Scroll Global */
+html {
+    scroll-behavior: smooth;
+}
+
+/* MODAL STYLING (Neobrutalism Style) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 30px;
+    border: 5px solid #000;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 15px 15px 0px #000;
+    text-align: center;
+    transform: scale(0.7); /* Efek awal */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal.show .modal-content {
+    transform: scale(1); /* Animasi pop-in */
+}
+
+.close-btn {
+    float: right;
+    font-size: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+}
