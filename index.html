@@ -1,40 +1,646 @@
-```html
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GJ' - Sirkel Terkece</title>
-    <!-- Menghubungkan file CSS terpisah -->
-    <link rel="stylesheet" href="style.css">
+    <title>GJ - Sirkel Pertemanan Terkece</title>
+    <!-- Google Fonts untuk font tebal Neobrutalisme -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Desain Dasar & Variabel Neobrutalisme */
+        :root {
+            --bg-color: #F4F4F0;
+            --black: #000000;
+            --yellow: #FFE600;
+            --pink: #FF60B5;
+            --blue: #3BE6FF;
+            --green: #46FF75;
+            --orange: #FF7B39;
+            --purple: #C876FF;
+            --cream: #FFFCEB;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--black) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--black);
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        /* Kelas Neobrutalisme Utama */
+        .neo-border {
+            border: 4px solid var(--black);
+        }
+
+        .neo-shadow {
+            box-shadow: 6px 6px 0px var(--black);
+        }
+
+        .neo-shadow-sm {
+            box-shadow: 4px 4px 0px var(--black);
+        }
+
+        .neo-shadow-lg {
+            box-shadow: 10px 10px 0px var(--black);
+        }
+
+        .neo-btn {
+            background-color: var(--yellow);
+            color: var(--black);
+            border: 4px solid var(--black);
+            padding: 12px 24px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px var(--black);
+            transition: all 0.1s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .neo-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        .neo-btn:active {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px var(--black);
+        }
+
+        /* Header / Navbar */
+        header {
+            max-width: 1200px;
+            margin: 0 auto 40px auto;
+            background-color: var(--orange);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            transform: rotate(-0.5deg);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            background-color: var(--black);
+            color: var(--yellow);
+            padding: 5px 15px;
+            font-family: 'Syne', sans-serif;
+            transform: rotate(-2deg);
+            display: inline-block;
+        }
+
+        .slogan {
+            font-weight: 800;
+            font-size: 1.1rem;
+            background-color: #fff;
+            padding: 8px 15px;
+            border: 3px solid var(--black);
+        }
+
+        /* Container Utama */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Banner Hero */
+        .hero {
+            background-color: var(--blue);
+            padding: 50px 30px;
+            margin-bottom: 50px;
+            position: relative;
+            transform: rotate(0.5deg);
+        }
+
+        .hero::before {
+            content: "GJ";
+            position: absolute;
+            right: 20px;
+            bottom: -20px;
+            font-size: 10rem;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            color: rgba(0,0,0,0.06);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 20px;
+            -webkit-text-stroke: 1px var(--black);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            background-color: var(--cream);
+            padding: 15px;
+            border: 3px solid var(--black);
+            display: inline-block;
+        }
+
+        /* Stat/Badge Sirkel */
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .stat-badge {
+            background-color: #fff;
+            padding: 10px 20px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-badge:nth-child(1) { background-color: var(--pink); }
+        .stat-badge:nth-child(2) { background-color: var(--yellow); }
+        .stat-badge:nth-child(3) { background-color: var(--green); }
+
+        /* Grid Anggota */
+        .section-title {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            display: inline-block;
+            background-color: var(--purple);
+            color: #fff;
+            padding: 10px 20px;
+            transform: rotate(-1deg);
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .member-card {
+            background-color: #fff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            padding: 20px;
+            border-bottom: 4px solid var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header .gender-tag {
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border: 2px solid var(--black);
+            text-transform: uppercase;
+        }
+
+        .boy-tag { background-color: var(--blue); }
+        .girl-tag { background-color: var(--pink); }
+
+        .avatar-container {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 4px solid var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Custom Pattern backgrounds for neobrutalism */
+        .bg-pattern-1 { background-color: #FFE600; background-image: radial-gradient(#000 15%, transparent 16%); background-size: 16px 16px; }
+        .bg-pattern-2 { background-color: #FF60B5; background-image: linear-gradient(45deg, #000 25%, transparent 25%), linear-gradient(-45deg, #000 25%, transparent 25%); background-size: 20px 20px; }
+        .bg-pattern-3 { background-color: #3BE6FF; background-image: repeating-linear-gradient(0deg, transparent, transparent 10px, #000 10px, #000 12px); }
+        .bg-pattern-4 { background-color: #FF7B39; background-image: radial-gradient(#fff 20%, transparent 20%); background-size: 12px 12px; }
+        .bg-pattern-5 { background-color: #C876FF; background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 12px); }
+        .bg-pattern-6 { background-color: #46FF75; background-image: radial-gradient(#000 10%, transparent 11%); background-size: 10px 10px; }
+        .bg-pattern-7 { background-color: #FFAA00; background-image: linear-gradient(90deg, #000 4px, transparent 4px); background-size: 20px 20px; }
+
+        .avatar-emoji {
+            font-size: 5.5rem;
+            z-index: 2;
+            filter: drop-shadow(4px 4px 0px #000);
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover .avatar-emoji {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .member-name {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            font-weight: 800;
+            background-color: var(--black);
+            color: #fff;
+            padding: 4px 8px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .member-desc {
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .traits-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .trait {
+            font-size: 0.8rem;
+            font-weight: 700;
+            background-color: var(--bg-color);
+            border: 2px solid var(--black);
+            padding: 3px 8px;
+        }
+
+        /* Section Interaktif: Generator Kegiatan */
+        .interactive-zone {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .interactive-zone {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .widget-box {
+            background-color: #fff;
+            padding: 30px;
+        }
+
+        .widget-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            background-color: var(--yellow);
+            display: inline-block;
+            padding: 5px 10px;
+            border: 3px solid var(--black);
+            transform: rotate(-0.5deg);
+        }
+
+        .widget-box p {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* Rencana Spinner */
+        .spinner-display {
+            background-color: var(--cream);
+            padding: 20px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            border: 3px dashed var(--black);
+        }
+
+        /* Vibe Matcher Game */
+        .quiz-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select {
+            padding: 10px;
+            border: 3px solid var(--black);
+            font-weight: 700;
+            font-size: 1rem;
+            background-color: var(--bg-color);
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            background-color: #fff;
+            box-shadow: 3px 3px 0px var(--black);
+        }
+
+        .quiz-result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--green);
+            display: none;
+            font-weight: 800;
+            border: 3px solid var(--black);
+        }
+
+        /* Wall of Memories / Mading */
+        .mading-section {
+            background-color: var(--cream);
+            padding: 40px 30px;
+            margin-bottom: 60px;
+        }
+
+        .mading-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: flex-end;
+        }
+
+        .mading-input {
+            flex-grow: 1;
+            min-width: 250px;
+        }
+
+        .mading-color-picker {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .color-dot {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--black);
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .color-dot.active {
+            transform: scale(1.2);
+            box-shadow: 2px 2px 0px var(--black);
+        }
+
+        .mading-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .note {
+            padding: 20px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transform: rotate(-1deg);
+            position: relative;
+        }
+
+        .note:nth-child(even) {
+            transform: rotate(1.5deg);
+        }
+
+        .note:nth-child(3n) {
+            transform: rotate(-2deg);
+        }
+
+        .note-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .note-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            border-top: 2px solid rgba(0,0,0,0.15);
+            padding-top: 8px;
+            font-size: 0.8rem;
+            font-weight: 800;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-logo {
+            font-size: 3rem;
+            font-family: 'Syne', sans-serif;
+            color: var(--yellow);
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--green);
+            color: var(--black);
+            padding: 15px 25px;
+            font-weight: 800;
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            z-index: 999;
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Latar Belakang Lingkaran (Glassmorphism Blobs) -->
-    <div class="blob blob-purple"></div>
-    <div class="blob blob-cyan"></div>
+    <!-- Header / Navbar -->
+    <header class="neo-border neo-shadow">
+        <div class="logo">GJ</div>
+        <div class="slogan neo-border">⚡ CIRKEL ANTI-GOMBAL 2026</div>
+    </header>
 
-    <div class="container">
-        <!-- Menu Navigasi -->
-        <nav class="brutal">
-            <span class="logo">GJ'</span>
-            <div class="nav-links">
-                <a href="#anggota" class="btn btn-sm">Anggota</a>
-                <a href="#momen" class="btn btn-sm">Mading</a>
-            </div>
-        </nav>
+    <!-- Container Utama -->
+    <div class="main-container">
 
-        <!-- Hero Section -->
-        <header class="hero">
-            <span class="badge badge-pink">⚡ OFFICIAL BASECAMP</span>
-            <h1 class="hero-title">Sirkel GJ' Terkece</h1>
-            <p class="brutal hero-desc">
-                Gabungan dari <b>4 Laki-laki hebat</b> &amp; <b>3 Perempuan tangguh</b> yang punya satu frekuensi kegilaan yang sama!
-            </p>
-            <div class="hero-actions">
-                <a href="#anggota" class="btn btn-yellow">Kenalan Kuy!</a>
-                <a href="#voting" class="btn">Main Game 🎮</a>
+        <!-- Banner Hero -->
+        <section class="hero neo-border neo-shadow-lg">
+            <div class="hero-content">
+                <h1>GJ: 4 COWO & 3 CEWE SATU FREKUENSI</h1>
+                <p>Tempat kumpulnya manusia-manusia random yang disatukan oleh takdir dan obrolan ga jelas.</p>
+                <div>
+                    <button class="neo-btn" onclick="scrollToElement('members')">Kenalan Dulu! 👇</button>
+                </div>
             </div>
+        </section>
+
+        <!-- Stats sirkel -->
+        <div class="stats-bar">
+            <div class="stat-badge neo-border neo-shadow-sm">👦 4 Laki-laki</div>
+            <div class="stat-badge neo-border neo-shadow-sm">👧 3 Perempuan</div>
+            <div class="stat-badge neo-border neo-shadow-sm">🔮 Tingkat Kerandoman: 999%</div>
+            <div class="stat-badge neo-border neo-shadow-sm">🍕 Makanan Favorit: Mie Instan & Seblak</div>
+        </div>
+
+        <!-- Section Grid Anggota -->
+        <section id="members" style="scroll-margin-top: 40px;">
+            <h2 class="section-title neo-border neo-shadow-sm">👤 BIODATA MEMBER</h2>
+            
+            <div class="members-grid">
+                
+                <!-- 1. Yehezkiel -->
+                <div class="member-card neo-border neo-shadow">
+                    <div class="card-header">
+                        <span class="member-role">CO-FOUNDER</span>
+                        <span class="gender-tag boy-tag">LAKI-LAKI</span>
+                    </div>
+                    <div class="avatar-container">
+                        <div class="avatar-bg bg-pattern-1"></div>
+                        <span class="avatar-emoji">😎</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3 class="member-name">YEHEZKIEL</h3>
+                            <p class="member-desc">"Si Paling Ambis tapi Santuy". Selalu punya rencana masa depan yang matang tapi sering batal nongkrong karena ketiduran.</p>
+                        </div>
+                        <div class="traits-list">
+                            <span class="trait">☕ Kopi Slayer</span>
+                            <span class="trait">💡 Strategis</span>
+                            <span class="trait">⏰ Molor King</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Jonathan -->
+                <div class="member-card neo-border neo-shadow">
+                    <div class="card-header">
+                        <span class="member-role">HUMOR DEPT.</span>
+                        <span class="gender-tag boy-tag">LAKI-LAKI</span>
+                    </div>
+                    <div class="avatar-container">
+                        <div class="avatar-bg bg-pattern-2"></div>
+                        <span class="avatar-emoji">🤡</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3 class="member-name">JONATHAN</h3>
+                            <p class="member-desc">"Si Humoris & Jamet Premium". Supplier meme harian di grup chat sirkel. Suasana langsung ramai kalau dia udah mulai ngomong.</p>
+                        </div>
+                        <div class="traits-list">
+                            <span class="trait">🎭 Meme Lord</span>
+                            <span class="trait">🔋 Hyperactive</span>
+                            <span class="trait">🏋️ Gym Setengah Niat</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Mathias -->
+                <div class="member-card neo-border neo-shadow">
+                    <div class="card-header">
+                        <span class="member-role">TECH SUPPORT</span>
+                        <span class="gender-tag boy-tag">LAKI-LAKI</span>
+                    </div>
+                    <div class="avatar-container">
+                        <div class="avatar-bg bg-pattern-3"></div>
+                        <span class="avatar-emoji">👾</span>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3 class="member-name">MATHIAS</h3>
+                            <p class="member-desc">"Si Kulkas 10 Pintu". Pendiam tapi kalau sekalinya nyeletuk langsung bikin satu sirkel ketawa nangis. Paling jago masalah perkodingan.</p>
+                        </div>
+                        <div class="traits-list">
+                                      </div>
         </header>
 
         <!-- Bagian Anggota Sirkel -->
