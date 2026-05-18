@@ -1,0 +1,164 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GJ' - Sirkel Terkece</title>
+    <!-- Menghubungkan file CSS terpisah -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Latar Belakang Lingkaran (Glassmorphism Blobs) -->
+    <div class="blob blob-purple"></div>
+    <div class="blob blob-cyan"></div>
+
+    <div class="container">
+        <!-- Menu Navigasi -->
+        <nav class="brutal">
+            <span class="logo">GJ'</span>
+            <div class="nav-links">
+                <a href="#anggota" class="btn btn-sm">Anggota</a>
+                <a href="#momen" class="btn btn-sm">Mading</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <span class="badge badge-pink">⚡ OFFICIAL BASECAMP</span>
+            <h1 class="hero-title">Sirkel GJ' Terkece</h1>
+            <p class="brutal hero-desc">
+                Gabungan dari <b>4 Laki-laki hebat</b> &amp; <b>3 Perempuan tangguh</b> yang punya satu frekuensi kegilaan yang sama!
+            </p>
+            <div class="hero-actions">
+                <a href="#anggota" class="btn btn-yellow">Kenalan Kuy!</a>
+                <a href="#voting" class="btn">Main Game 🎮</a>
+            </div>
+        </header>
+
+        <!-- Bagian Anggota Sirkel -->
+        <section id="anggota">
+            <h2 class="sec-title">Siapa Saja Kita? 👥</h2>
+            <div class="filter-wrapper">
+                <button onclick="renderMembers('semua')" id="btn-semua" class="btn filter-btn btn-active">Semua</button>
+                <button onclick="renderMembers('L')" id="btn-L" class="btn filter-btn">Laki-Laki</button>
+                <button onclick="renderMembers('P')" id="btn-P" class="btn filter-btn">Perempuan</button>
+            </div>
+            <div id="members-grid" class="grid"></div>
+        </section>
+
+        <!-- Bagian Mading Cerita -->
+        <section id="momen">
+            <h2 class="sec-title">Mading GJ' 📌</h2>
+            <div class="grid">
+                <!-- Postingan Statis Awal -->
+                <div class="brutal post-card">
+                    <div class="post-card-content">
+                        <div class="post-author-header">
+                            <div class="avatar avatar-pink">K</div>
+                            <div>
+                                <h4 class="author-name">Kesya</h4>
+                                <span class="post-time">Kemarin</span>
+                            </div>
+                        </div>
+                        <p class="post-text">"Nongkrong kali ini komplit! Slide terakhir mukanya Zulian pas kepedesan paling juara wkwk."</p>
+                    </div>
+                    <div class="post-footer">
+                        <span onclick="like(this)" class="like-button">🤍 <span>12</span> Suka</span>
+                        <span>💬 3 Komentar</span>
+                    </div>
+                </div>
+
+                <!-- Formulir Membuat Cerita Baru -->
+                <div class="brutal create-post-card">
+                    <h3 class="form-title">Cerita Baru ✍️</h3>
+                    <select id="p-author">
+                        <option value="">Pilih Siapa Dirimu...</option>
+                        <option value="Yehezkiel">Yehezkiel</option>
+                        <option value="Jonathan">Jonathan</option>
+                        <option value="Mathias">Mathias</option>
+                        <option value="Zulian">Zulian</option>
+                        <option value="Kesya">Kesya</option>
+                        <option value="Fitri">Fitri</option>
+                        <option value="Patrecia">Patrecia</option>
+                    </select>
+                    <textarea id="p-text" rows="2" placeholder="Tulis kejadian seru hari ini..."></textarea>
+                    <button onclick="addPost()" class="btn btn-purple btn-full">Kirim Cerita 🚀</button>
+                </div>
+            </div>
+            <div id="dynamic-posts" class="grid m-top-20"></div>
+        </section>
+
+        <!-- Bagian Game Voting -->
+        <section id="voting">
+            <h2 class="sec-title">Siapa Paling...? 🤔</h2>
+            <div class="brutal game-card">
+                <span class="badge badge-emerald">GAME SIRKEL</span>
+                <h3 class="game-question">Siapa yang paling sering wacana kalau diajak kumpul?</h3>
+                
+                <div id="vote-options" class="game-grid"></div>
+
+                <div id="vote-results" class="hidden results-box">
+                    <h4 class="results-title">Hasil Voting Sementara:</h4>
+                    <div id="results-bars"></div>
+                    <button onclick="resetVote()" class="btn btn-sm m-top-10">Ulangi Vote</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bagian Rencana Agenda Kumpul -->
+        <section id="agenda">
+            <h2 class="sec-title">Agenda Kumpul 🗓️</h2>
+            <div class="brutal agenda-box">
+                <div class="agenda-details">
+                    <div>
+                        <span class="badge badge-indigo">SABTU INI, 23 MEI</span>
+                        <h3 class="agenda-topic">Nongkrong Santai Akhir Bulan</h3>
+                        <p class="agenda-sub">Waroeng Kopi Sunset - Jam 17:00 WIB.</p>
+                    </div>
+                    <div class="rsvp-list-wrapper">
+                        <h4 class="rsvp-title">Yang Siap Hadir:</h4>
+                        <div id="rsvp-avatars" class="rsvp-avatars-flex"></div>
+                        <p id="rsvp-summary" class="rsvp-text-summary"></p>
+                    </div>
+                </div>
+
+                <div class="agenda-form-side">
+                    <h3 class="agenda-form-title">Ikutan Gak? 🍕</h3>
+                    <select id="rsvp-name">
+                        <option value="">Pilih Namamu...</option>
+                        <option value="Yehezkiel">Yehezkiel</option>
+                        <option value="Jonathan">Jonathan</option>
+                        <option value="Mathias">Mathias</option>
+                        <option value="Zulian">Zulian</option>
+                        <option value="Kesya">Kesya</option>
+                        <option value="Fitri">Fitri</option>
+                        <option value="Patrecia">Patrecia</option>
+                    </select>
+                    <div class="rsvp-buttons">
+                        <button onclick="submitRsvp('Hadir')" class="btn btn-emerald">Hadir 👍</button>
+                        <button onclick="submitRsvp('Absen')" class="btn btn-pink">Absen 🥲</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2 class="footer-logo">GJ'</h2>
+            <p class="footer-text">Geng J' &copy; 2026. Didukung oleh persahabatan murni tanpa wacana.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast">Notifikasi</div>
+
+    <!-- Menghubungkan file JavaScript terpisah -->
+    <script src="app.js"></script>
+</body>
+</html>
+
+```
